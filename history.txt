@@ -1,0 +1,90 @@
+    1  ls
+    2  mkdir face
+    3  cd face/
+    4  ls
+    5  yum
+    6  apk
+    7  apt
+    8  apt install go
+    9  apt update
+   10  uname -a
+   11  apt install go
+   12  apt install golang
+   13  ls
+   14  chmod +x ./build.sh 
+   15  ./build.sh 
+   16  wget https://github.com/opencv/opencv/archive/4.5.5.zip
+   17  apt install wget
+   18  wget https://github.com/opencv/opencv/archive/4.5.5.zip
+   19  unzip ./4.5.5.zip 
+   20  apt install unzip
+   21  unzip ./4.5.5.zip 
+   22  cd opencv-4.5.5/
+   23  make
+   24  cmake
+   25  apt install cmake & make
+   26  apt install cmake make
+   27  kill -9 57638
+   28  apt install cmake make
+   29  cmake -S . -B build
+   30  make
+   31  ls
+   32  cd build/
+   33  ls
+   34  make
+   35  make install
+   36  cd ..
+   37  cd ..
+   38  ls
+   39  ./build.sh 
+   40  ./build.sh 
+   41  ./build.sh 
+   42  ./build.sh 
+   43  ./build.sh 
+   44  ./build.sh 
+   45  ./build.sh 
+   46  ./build.sh 
+   47  ./build.sh 
+   48  ./build.sh 
+   49* 
+   50  ./main 
+   51  ./main 
+   52  cp ./ttvfaceengine1.so  /usr/lib/
+   53  ./main 
+   54  ./main 
+   55  ls /usr/lib/
+   56  ls /lib64/
+   57  ls /lib
+   58  cp ./ttvfaceengine1.so /lib
+   59  ./main 
+   60  cp ./ttvfaceengine1.so /lib64
+   61  ./main
+   62  ./main
+   63  ls /usr/local/lib
+   64  cp ./ttvfaceengine1.so  /usr/local/lib/
+   65  ./main
+   66  ./main
+   67  cp ./ttvfaceengine1.so  /usr/local/lib/
+   68  ./main
+   69  ./main 
+   70  ./main 
+   71  cp ./libttvfaceengine1.so  /usr/local/lib/
+   72  ./main 
+   73  ls /usr/local/lib
+   74  ./main 
+   75  cp ./libttvfaceengine1.so  /lib
+   76  ./main 
+   77  ./main 
+   78  ./main 
+   79  ./main 
+   80  ./build.sh 
+   81  ./build.sh 
+   82  ./build.sh 
+   83  ./build.sh 
+   84  ./main 
+   85  ./main 
+   86  ./build.sh 
+   87  ./build.sh 
+   88  ./main 
+   89  history
+   90  history > ./history.txt
