@@ -1,0 +1,16 @@
+FROM debian 
+RUN apt update -y
+RUN apt install -y golang wget unzip cmake make
+RUN wget https://github.com/opencv/opencv/archive/4.5.5.zip
+RUN unzip ./4.5.5.zip 
+WORKDIR /opencv-4.5.5/
+RUN cmake -S . -B build 
+WORKDIR /opencv-4.5.5/build
+RUN make 
+RUN make install
+COPY libttvfaceengine1.so /lib/
+COPY ttv_chech /usr/bin/ttv_chech
+COPY  dict   /opt/ttv_dict
+
+CMD [ "ttv_chech" ]
+

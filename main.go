@@ -3,11 +3,6 @@ package main
 // #include <stdio.h>
 // #include <errno.h>
 // #include <stdlib.h>
-// #include <iostream>
-// #include <opencv2/opencv.hpp>
-// #include <vector>
-// #include <string>
-// #include <stdlib.h>
 // #include <time.h>
 // #include <sys/time.h>
 // #include <dirent.h>
@@ -22,7 +17,7 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/go-opencv/go-opencv/opencv"
+	"gocv.io/x/gocv"
 )
 
 /*
@@ -32,11 +27,27 @@ int ttv_extract_feature(unsigned char* bgrData, int width, int height, int* face
 double ttv_compare_feature(double* feat1, double* feat2);
 */
 
-func DetectFace(image byte[]) error { 
-	imageInfo:=	opencv.DecodeImageM(unsafe.Pointer(&image[0]),1)
-	imageData:= imageInfo.GetData()
-	int faceBox1[4] = { 0 };
-    double landmarks1[136] = { 0 };
+func DetectFace(image []byte) error {
+	imageInfo, err := gocv.IMDecode(image, gocv.IMReadAnyColor)
+	if err != nil {
+		return err
+	}
+	imageData, err := imageInfo.DataPtrUint8()
+	if err != nil {
+		return err
+	}
+	faceBox := make([]int, 4)
+	landmarks := make([]float64, 136)
+	imageDataPtr := unsafe.Pointer(&imageData[0])
+	defer C.free(imageDataPtr)
+	faceBoxPtr := unsafe.Pointer(&faceBox[0])
+	defer C.free(faceBoxPtr)
+	landmarksPtr := unsafe.Pointer(&landmarks[0])
+	defer C.free(landmarksPtr)
+	imageDataPtrC := (*C.uchar)(imageDataPtr)
+	faceBoxPtrC := (*C.int)(imageDataPtr)
+	landmarksPtrC := (*C.double)(imageDataPtr)
+	C.ttv_detect_face(imageDataPtrC, C.int(imageInfo.Cols()), C.int(imageInfo.Rows()), faceBoxPtrC, landmarksPtrC)
 	return nil
 }
 
@@ -44,7 +55,7 @@ func Init(path string) error {
 	cPath := C.CString(path)
 	defer C.free(unsafe.Pointer(cPath))
 	r := C.ttv_init(cPath)
-	if r != 1 {
+	if r != 0 {
 		return errors.New("ttv init err")
 	}
 	return nil

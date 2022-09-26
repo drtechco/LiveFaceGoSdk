@@ -4,3 +4,5 @@ vendor
 .DS_Store
 dict/hwid.txt
 dict/license.txt
+.idea/
+go.sum
